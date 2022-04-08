@@ -10,7 +10,7 @@ using aspnetapp;
 
 public class CounterRequest {
     public string action { get; set; }
-}
+} 
 public class CounterResponse {
     public int data { get; set; }
 }

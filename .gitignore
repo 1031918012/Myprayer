@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs/aspnetapp/v17
+/.vs/myprayer/v17
+/.vs
+/aspnetapp/bin/Debug/net6.0
+/aspnetapp/obj
+/aspnetapp/Properties
