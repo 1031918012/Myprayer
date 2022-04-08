@@ -20,10 +20,10 @@ namespace aspnetapp.Controllers
         /// <param name="reqGetAbnormal"></param>
         /// <returns></returns>
         [HttpPost("GetAbnormalPage")]
-        public async Task<string> GetAbnormalPage()
+        public string GetAbnormalPage()
         {
             Console.WriteLine("这个接口接受消息成功了");
-            return "";
+            return "1";
         }
     }
 }
