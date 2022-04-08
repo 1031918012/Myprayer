@@ -12,7 +12,7 @@ namespace aspnetapp.Controllers
 {
     [Route("api/[Controller]")]
     [ApiController]
-    public class CounterController : ControllerBase
+    public class MessageController : ControllerBase
     {
         /// <summary>
         /// 
