@@ -33,7 +33,7 @@ namespace aspnetapp.Controllers
                     var response = _httpClient.PostAsync(weixinAPI, content).Result;
                     var result = response.Content.ReadAsStringAsync().Result;
                     var json = JsonConvert.DeserializeObject<dynamic>(result);
-                    Console.WriteLine(json);
+                    Console.WriteLine(result);
                 }
                 return "";
             }
