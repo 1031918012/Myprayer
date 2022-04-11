@@ -17,11 +17,7 @@ namespace aspnetapp.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
-        private readonly HttpClient _client;
-        public MessageController(HttpClient client)
-        {
-            _client = client;
-        }
+        private static HttpClient _httpClient = new HttpClient ();
         /// <returns></returns>
         [HttpPost("message")]
         public string Message([FromBody] MessageModel messageModel)
@@ -34,9 +30,9 @@ namespace aspnetapp.Controllers
                     var token = HttpContext.Request.Headers["x-wx-cloudbase-access-token"];
                     Console.WriteLine(JsonConvert.SerializeObject(messageModel));
                     var weixinAPI = "https://api.weixin.qq.com/cgi-bin/message/custom/send?cloudbase_access_token=" + token;
-                    _client.BaseAddress = new Uri("https://api.weixin.qq.com");
+                    _httpClient.BaseAddress = new Uri("https://api.weixin.qq.com");
                     var content = new StringContent(JsonConvert.SerializeObject(new { touser = messageModel.FromUserName, msgtype = "text", text = new { content = "云托管接收消息推送成功" + JsonConvert.SerializeObject(messageModel) } }), Encoding.UTF8, "application/json");
-                    var response = _client.PostAsync(weixinAPI, content).Result;
+                    var response = _httpClient.PostAsync(weixinAPI, content).Result;
                     var result = response.Content.ReadAsStringAsync().Result;
                     var json = JsonConvert.DeserializeObject<dynamic>(result);
                     Console.WriteLine(json);
