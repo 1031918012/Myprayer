@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>aspnetapp</name>
+    </assembly>
+    <members>
+        <member name="M:aspnetapp.Controllers.MessageController.Message(aspnetapp.Controllers.MessageController.MessageModel)">
+            <returns></returns>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.ToUserName">
+            <summary>
+            开发者微信号
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.FromUserName">
+            <summary>
+            发送方帐号（一个OpenID）
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.CreateTime">
+            <summary>
+            消息创建时间 （整型）
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.MsgType">
+            <summary>
+            消息类型，文本为text
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.Content">
+            <summary>
+            文本消息内容
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.MsgId">
+            <summary>
+            消息id，64位整型
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.PicUrl">
+            <summary>
+            图片链接（由系统生成）
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.MediaId">
+            <summary>
+            图片消息媒体id，可以调用获取临时素材接口拉取数据。
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.Format">
+            <summary>
+            语音格式
+            </summary>
+        </member>
+        <member name="P:aspnetapp.Controllers.MessageController.MessageModel.Recognition">
+            <summary>
+            语音识别结果
+            </summary>
+        </member>
+        <member name="T:aspnetapp.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:aspnetapp.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:aspnetapp.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:aspnetapp.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:aspnetapp.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:aspnetapp.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:aspnetapp.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+             This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:aspnetapp.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
