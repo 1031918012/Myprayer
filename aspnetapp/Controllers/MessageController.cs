@@ -23,7 +23,7 @@ namespace aspnetapp.Controllers
             {
                 Console.WriteLine("success");
                 StreamReader reader = new StreamReader(Request.Body);
-                string indata = reader.ReadToEnd();
+                string indata = reader.ReadToEndAsync().Result;
                 Console.WriteLine(indata);
                 return "";
             }
