@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <None Update="aspnetapp.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
