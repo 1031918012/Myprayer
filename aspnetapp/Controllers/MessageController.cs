@@ -19,11 +19,20 @@ namespace aspnetapp.Controllers
         [HttpPost("message")]
         public string Message()
         {
-            Console.WriteLine("success");
-            StreamReader reader = new StreamReader(Request.Body);
-            string indata = reader.ReadToEnd();
-            Console.WriteLine(indata);
-            return "";
+            try
+            {
+                Console.WriteLine("success");
+                StreamReader reader = new StreamReader(Request.Body);
+                string indata = reader.ReadToEnd();
+                Console.WriteLine(indata);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+            
         }
     }
 }
