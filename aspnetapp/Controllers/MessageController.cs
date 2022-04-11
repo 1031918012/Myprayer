@@ -17,11 +17,12 @@ namespace aspnetapp.Controllers
     {
         /// <returns></returns>
         [HttpPost("message")]
-        public string Message()
+        public string Message([FromBody] MessageModel messageModel)
         {
             try
             {
                 Console.WriteLine("success");
+                Console.WriteLine(JsonConvert.SerializeObject(messageModel));
                 StreamReader reader = new StreamReader(Request.Body);
                 string indata = reader.ReadToEndAsync().Result;
                 Console.WriteLine(indata);
@@ -33,6 +34,15 @@ namespace aspnetapp.Controllers
                 throw;
             }
             
+        }
+        public class MessageModel
+        {
+            public string ToUserName { get; set; }
+            public string FromUserName { get; set; }
+            public long CreateTime { get; set; }
+            public string MsgType { get; set; }
+            public string Content { get; set; }
+            public long MsgId { get; set; }
         }
     }
 }
