@@ -30,7 +30,6 @@ namespace aspnetapp.Controllers
                     var token = HttpContext.Request.Headers["x-wx-cloudbase-access-token"];
                     Console.WriteLine(JsonConvert.SerializeObject(messageModel));
                     var weixinAPI = "https://api.weixin.qq.com/cgi-bin/message/custom/send?cloudbase_access_token=" + token;
-                    _httpClient.BaseAddress = new Uri("https://api.weixin.qq.com");
                     var content = new StringContent(JsonConvert.SerializeObject(new { touser = messageModel.FromUserName, msgtype = "text", text = new { content = "云托管接收消息推送成功" + JsonConvert.SerializeObject(messageModel) } }), Encoding.UTF8, "application/json");
                     var response = _httpClient.PostAsync(weixinAPI, content).Result;
                     var result = response.Content.ReadAsStringAsync().Result;
