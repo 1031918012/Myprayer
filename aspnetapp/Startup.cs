@@ -27,42 +27,13 @@ namespace aspnetapp
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //            //注入freesql
-            //            services.AddSingleton(p =>
-            //            {
-            //                var freesql = new FreeSqlBuilder()
-            //                .UseConnectionString(DataType.MySql, Configuration.GetSection("DbConnectionString").Value)
-            //                .Build();
-
-            //#if DEBUG ||DEBUG1
-            //                freesql.Aop.CurdAfter += (sender, e) =>
-            //                {
-            //                    Debug.WriteLine(e.Sql);
-            //                };
-            //#endif
-            //                return freesql;
-            //            });
-            //            services.AddScoped<UnitOfWorkManager>();
-            //services.AddFreeRepository(null, typeof(BaseService).Assembly);
-
-            //注入缓存
-
-#if DEBUG
-            //services.AddSingleton<ICache,NormalCache>();
-#else
-            services.AddSingleton<ICache>(new RedisCache(Configuration.GetSection("RedisConnectionString").Value));
-#endif
-
             services.AddControllers((config) =>
             {
-                //config.Filters.Add(typeof(ActionFilter));
-                //config.Filters.Add(typeof(ExceptionFilter));
             })
             .AddJsonOptions(config =>
             {
                 config.JsonSerializerOptions.PropertyNamingPolicy = null;//原样输出
 
-                //config.JsonSerializerOptions.Converters.Add(new DateTimeJsonConverter());
 
             })
             .AddControllersAsServices();
@@ -70,13 +41,10 @@ namespace aspnetapp
             //swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FineExTech.TMS.WebApi", Version = "v1" });
-                var commentFiles = new FileInfo(typeof(Startup).Assembly.Location)
-                   .Directory.GetFiles("*.xml");
-                foreach (var file in commentFiles)
-                {
-                    c.IncludeXmlComments(file.FullName, true);
-                }
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "aspnetapp", Version = "v1" });
+                var file = Path.Combine(AppContext.BaseDirectory, "aspnetapp.xml");  // xml文档绝对路径
+                var path = Path.Combine(AppContext.BaseDirectory, file); // xml文档绝对路径
+                c.IncludeXmlComments(path, true); // true : 显示控制器层注释
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "token授权 直接在下框中输入Bearer {token}（注意两者之间是一个空格）",
@@ -113,18 +81,8 @@ namespace aspnetapp
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FineExTech.TMS.WebApi v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "aspnetapp v1"));
             app.UseStaticFiles();
-            //string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Image");
-            //if (!System.IO.Directory.Exists(filePath))
-            //{
-            //    System.IO.Directory.CreateDirectory(filePath);
-            //}
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(filePath),
-            //    RequestPath = "/Image"
-            //});
 
             app.UseHttpsRedirection();
 
