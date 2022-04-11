@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>57393389627611478466</UserSecretsId>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>..\aspnetapp\aspnetapp.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
