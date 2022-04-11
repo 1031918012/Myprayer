@@ -19,7 +19,10 @@ namespace aspnetapp.Controllers
         [HttpPost("message")]
         public string Message()
         {
-            Console.WriteLine("转发消息成功了");
+            Console.WriteLine("success");
+            StreamReader reader = new StreamReader(Request.Body);
+            string indata = reader.ReadToEnd();
+            Console.WriteLine(indata);
             return "";
         }
     }
